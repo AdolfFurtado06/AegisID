@@ -1,0 +1,86 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String             @id @default(uuid())
+  name            String
+  email           String             @unique
+  passwordHash    String
+  role            String             @default("USER") // "USER" or "ADMIN"
+  walletAddress   String?            @unique
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  applications         KycApplication[]     @relation("UserApplications")
+  reviewedApplications KycApplication[]     @relation("AdminReviews")
+  credentials          IdentityCredential[]
+  logs                 VerificationLog[]
+}
+
+model WalletChallenge {
+  id        String    @id @default(uuid())
+  address   String
+  nonce     String    @unique
+  message   String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([address])
+  @@index([expiresAt])
+}
+
+model KycApplication {
+  id              String              @id @default(uuid())
+  userId          String
+  documentType    String              // e.g. "MOCK_ID", "MOCK_PAN", "PASSPORT_SAMPLE"
+  documentNumber  String              // Private synthetic identity number
+  documentPath    String              // Private path in storage/uploads
+  status          String              @default("PENDING") // PENDING, APPROVED, REJECTED
+  submittedAt     DateTime            @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  rejectionReason String?
+
+  user            User                @relation("UserApplications", fields: [userId], references: [id])
+  reviewer        User?               @relation("AdminReviews", fields: [reviewedBy], references: [id])
+  credential      IdentityCredential?
+}
+
+model IdentityCredential {
+  id               String            @id // Opaque credential ID (e.g. hex/uuid bytes32 compatible)
+  applicationId    String            @unique
+  userId           String
+  credentialHash   String            // Document commitment (bytes32 hex)
+  salt             String            // Securely stored off-chain salt for commitment verification
+  transactionHash  String?
+  blockNumber      Int?
+  status           String            @default("PENDING_ISSUANCE") // PENDING_ISSUANCE, ACTIVE, REVOKED, ISSUANCE_FAILED
+  issuedAt         DateTime?
+  revokedAt        DateTime?
+  revocationTxHash String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  application      KycApplication    @relation(fields: [applicationId], references: [id])
+  user             User              @relation(fields: [userId], references: [id])
+  logs             VerificationLog[]
+}
+
+model VerificationLog {
+  id              String              @id @default(uuid())
+  credentialId    String
+  action          String              // ISSUED, VERIFIED, REVOKED
+  transactionHash String?
+  performedBy     String?
+  createdAt       DateTime            @default(now())
+
+  credential      IdentityCredential  @relation(fields: [credentialId], references: [id])
+  performer       User?               @relation(fields: [performedBy], references: [id])
+}

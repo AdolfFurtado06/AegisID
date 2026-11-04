@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bgMain text-textPrimary antialiased selection:bg-forest selection:text-white font-sans;
+    margin: 0;
+    min-height: 100vh;
+  }
+}
