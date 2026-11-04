@@ -1,16 +1,16 @@
-# Blockchain-Based KYC and Digital Identity Verification (ChainKYC)
+# Blockchain-Based KYC and Digital Identity Verification (AegisID)
 
 ## Academic Mini-Project Report
 
 **Project Title:** Blockchain-Based KYC and Digital Identity Verification  
-**Short Name:** ChainKYC  
-**Author:** Academic Prototype / Engineering Mini-Project  
+**Project Name:** AegisID  
+**Author:** Adolf Furtado  
 **Technologies:** Solidity (^0.8.24), Hardhat, OpenZeppelin, React (Vite), Tailwind CSS, Node.js, Express, SQLite, Prisma ORM, Ethers.js v6  
 
 ---
 
 ## 1. Abstract
-Traditional Know-Your-Customer (KYC) onboarding processes suffer from redundant verification cycles, single points of failure in centralized storage, and widespread exposure of personally identifiable information (PII). This project proposes and implements **ChainKYC**, a privacy-conscious, decentralized digital identity verification system. Users submit mock identity documents through a web application. Administrators review the submission and issue digital credentials registered as cryptographic commitments on an Ethereum-compatible smart contract (`IdentityVerification.sol`). Third-party verifiers scan a QR code to inspect the authoritative validity status (`ACTIVE`, `REVOKED`, `NOT FOUND`) directly from the smart contract without accessing private personal data. The system features cryptographic Sign-In with Ethereum (SIWE) wallet authentication, salted document commitments, automated on-chain receipt verification, and authoritative revocation.
+Traditional Know-Your-Customer (KYC) onboarding processes suffer from redundant verification cycles, single points of failure in centralized storage, and widespread exposure of personally identifiable information (PII). This project proposes and implements **AegisID**, a privacy-conscious, decentralized digital identity verification system. Users submit mock identity documents through a web application. Administrators review the submission and issue digital credentials registered as cryptographic commitments on an Ethereum-compatible smart contract (`IdentityVerification.sol`). Third-party verifiers scan a QR code to inspect the authoritative validity status (`ACTIVE`, `REVOKED`, `NOT FOUND`) directly from the smart contract without accessing private personal data. The system features cryptographic Sign-In with Ethereum (SIWE) wallet authentication, salted document commitments, automated on-chain receipt verification, and authoritative revocation.
 
 ---
 
@@ -22,7 +22,7 @@ In modern financial and regulatory services, identity verification is repeated f
 3. **Static Credentials:** Physical or paper-based credentials cannot be reliably revoked in real time without trusting an unverified intermediary.
 
 ### 2.2 Proposed Solution
-ChainKYC introduces a decoupled architecture:
+AegisID introduces a decoupled architecture:
 * **Private Off-Chain Storage:** Mock documents and personal profiles are retained off-chain in protected storage with strict access controls.
 * **On-Chain Privacy Commitment:** The smart contract stores only an opaque 32-byte credential identifier and a salted document digest. Zero PII is committed to the blockchain.
 * **Dynamic Locator QR:** The QR code encodes only a verification URL pointing to the credential identifier. When scanned, verification queries live contract state on the blockchain, ensuring that revocation is authoritative and instantaneous.
@@ -161,4 +161,4 @@ The automated suite [`integration.test.js`](file:///C:/Users/Adolf%20Furtado/One
 ---
 
 ## 8. Conclusion
-ChainKYC demonstrates a functional, privacy-first digital identity verification framework. By marrying off-chain synthetic document inspection with on-chain cryptographic commitments and live QR verification, the system resolves the trade-off between user privacy and decentralized verifiable authenticity.
+AegisID demonstrates a functional, privacy-first digital identity verification framework. By marrying off-chain synthetic document inspection with on-chain cryptographic commitments and live QR verification, the system resolves the trade-off between user privacy and decentralized verifiable authenticity.
