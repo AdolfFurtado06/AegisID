@@ -41,7 +41,7 @@ function normalizeWalletAddress(walletAddress) {
 
 function createWalletMessage(address, nonce, issuedAt, expiresAt) {
   return [
-    "ChainKYC wallet verification",
+    "AegisID wallet verification",
     "",
     `Address: ${address}`,
     `Nonce: ${nonce}`,
@@ -162,7 +162,7 @@ async function loginWithWallet(req, res) {
     const user = await findUserByWallet(address);
     if (!user) {
       return res.status(404).json({
-        error: "No ChainKYC account is linked to this wallet. Sign in with a password and link it first.",
+        error: "No AegisID account is linked to this wallet. Sign in with a password and link it first.",
       });
     }
 

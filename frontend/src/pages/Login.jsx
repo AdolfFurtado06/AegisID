@@ -61,7 +61,7 @@ export default function Login() {
           <div className="w-12 h-12 rounded-btn bg-forest-light text-forest flex items-center justify-center mb-3">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h2 className="text-2xl font-bold text-textPrimary tracking-tight">Sign in to ChainKYC</h2>
+          <h2 className="text-2xl font-bold text-textPrimary tracking-tight">Sign in to AegisID</h2>
           <p className="text-xs text-textSecondary mt-1">
             Access your privacy-preserving KYC verification dashboard
           </p>
@@ -140,7 +140,7 @@ export default function Login() {
           Sign in with MetaMask
         </button>
         <p className="text-[11px] text-textSecondary text-center mt-2">
-          Your wallet must already be linked to a ChainKYC account.
+          Your wallet must already be linked to an AegisID account.
         </p>
 
         {/* Demo Fast-fill Shortcuts */}

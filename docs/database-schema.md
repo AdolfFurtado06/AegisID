@@ -1,6 +1,6 @@
-# ChainKYC — Database Schema & Entity-Relationship Model
+# AegisID — Database Schema & Entity-Relationship Model
 
-The ChainKYC backend persistence layer is implemented using SQLite and Prisma ORM.
+The AegisID backend persistence layer is implemented using SQLite and Prisma ORM.
 
 ## Entity-Relationship Diagram
 

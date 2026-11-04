@@ -1,4 +1,4 @@
-# ChainKYC — System Sequence Diagrams & Workflows
+# AegisID — System Sequence Diagrams & Workflows
 
 ## 1. KYC Submission & Document Processing Flow
 

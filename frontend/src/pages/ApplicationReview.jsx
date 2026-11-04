@@ -199,7 +199,7 @@ export default function ApplicationReview() {
 
   const downloadFileProtected = async () => {
     try {
-      const token = localStorage.getItem("chainkyc_token");
+      const token = localStorage.getItem("aegisid_token") || localStorage.getItem("chainkyc_token");
       const res = await fetch(`http://localhost:5000/api/kyc/${id}/document`, {
         headers: { Authorization: `Bearer ${token}` },
       });

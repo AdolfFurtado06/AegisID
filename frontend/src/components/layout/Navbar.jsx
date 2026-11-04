@@ -44,7 +44,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg text-textPrimary tracking-tight flex items-center gap-2">
-                  ChainKYC
+                  AegisID
                   <span className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide uppercase bg-forest-light text-forest border border-emerald-300">
                     Local Hardhat
                   </span>

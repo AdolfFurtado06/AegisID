@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "ChainKYC Backend API",
+  "description": "AegisID Backend API",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",

@@ -6,7 +6,9 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("chainkyc_token") || null);
+  const [token, setToken] = useState(
+    localStorage.getItem("aegisid_token") || localStorage.getItem("chainkyc_token") || null
+  );
   const [loading, setLoading] = useState(true);
 
   // Sync user profile on mount
@@ -23,6 +25,7 @@ export function AuthProvider({ children }) {
         console.error("Failed to load user profile:", err);
         setToken(null);
         setUser(null);
+        localStorage.removeItem("aegisid_token");
         localStorage.removeItem("chainkyc_token");
       } finally {
         setLoading(false);
@@ -34,7 +37,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     const res = await api.post("/auth/login", { email, password });
     const { token: receivedToken, user: receivedUser } = res.data;
-    localStorage.setItem("chainkyc_token", receivedToken);
+    localStorage.setItem("aegisid_token", receivedToken);
     setToken(receivedToken);
     setUser(receivedUser);
     return receivedUser;
@@ -43,7 +46,7 @@ export function AuthProvider({ children }) {
   const register = async (name, email, password) => {
     const res = await api.post("/auth/register", { name, email, password });
     const { token: receivedToken, user: receivedUser } = res.data;
-    localStorage.setItem("chainkyc_token", receivedToken);
+    localStorage.setItem("aegisid_token", receivedToken);
     setToken(receivedToken);
     setUser(receivedUser);
     return receivedUser;
@@ -81,13 +84,14 @@ export function AuthProvider({ children }) {
     const proof = await getWalletProof();
     const res = await api.post("/auth/wallet/login", proof);
     const { token: receivedToken, user: receivedUser } = res.data;
-    localStorage.setItem("chainkyc_token", receivedToken);
+    localStorage.setItem("aegisid_token", receivedToken);
     setToken(receivedToken);
     setUser(receivedUser);
     return receivedUser;
   };
 
   const logout = () => {
+    localStorage.removeItem("aegisid_token");
     localStorage.removeItem("chainkyc_token");
     setToken(null);
     setUser(null);

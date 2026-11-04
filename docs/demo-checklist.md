@@ -1,4 +1,4 @@
-# ChainKYC - Live Demonstration Checklist & Evaluation Script
+# AegisID - Live Demonstration Checklist & Evaluation Script
 
 This script walks through the end-to-end verification cycle using synthetic data.
 

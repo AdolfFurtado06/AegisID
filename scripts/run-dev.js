@@ -63,7 +63,7 @@ async function waitForRpc(timeoutMs = 30000) {
 
 async function main() {
   console.log("==================================================");
-  console.log("🚀 Starting ChainKYC Full Development Stack");
+  console.log("🚀 Starting AegisID Full Development Stack");
   console.log("==================================================");
 
   // 1. Start Hardhat Node
@@ -105,7 +105,7 @@ async function main() {
   runProcess("FRONTEND", npmCmd, ["run", "dev"], path.join(ROOT, "frontend"));
 
   console.log("\n==================================================");
-  console.log("✨ All ChainKYC services are running!");
+  console.log("✨ All AegisID services are running!");
   console.log("👉 Open in browser: http://localhost:5173");
   console.log("Press Ctrl+C to terminate all services.");
   console.log("==================================================\n");
@@ -126,7 +126,7 @@ function cleanup() {
 }
 
 process.on("SIGINT", () => {
-  console.log("\nShutting down ChainKYC services...");
+  console.log("\nShutting down AegisID services...");
   cleanup();
   process.exit(0);
 });

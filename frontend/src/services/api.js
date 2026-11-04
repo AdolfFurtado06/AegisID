@@ -12,7 +12,7 @@ const api = axios.create({
 // Request interceptor to attach JWT token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("chainkyc_token");
+    const token = localStorage.getItem("aegisid_token") || localStorage.getItem("chainkyc_token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -27,7 +27,8 @@ api.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       // If unauthorized and has token, clear session
-      if (localStorage.getItem("chainkyc_token")) {
+      if (localStorage.getItem("aegisid_token") || localStorage.getItem("chainkyc_token")) {
+        localStorage.removeItem("aegisid_token");
         localStorage.removeItem("chainkyc_token");
         localStorage.removeItem("chainkyc_user");
         if (window.location.pathname !== "/login" && !window.location.pathname.startsWith("/verify/")) {

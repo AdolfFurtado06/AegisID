@@ -1,15 +1,15 @@
-# ChainKYC — Project Presentation Slides (Viva / Evaluation)
+# AegisID — Project Presentation Slides (Viva / Evaluation)
 
-A 10-slide presentation structure for defending and demonstrating the ChainKYC mini-project.
+A 10-slide presentation structure for defending and demonstrating the AegisID mini-project.
 
 ---
 
 ### Slide 1: Title Slide
-* **Title:** ChainKYC — Blockchain-Based Digital Identity & KYC Verification
+* **Title:** AegisID — Blockchain-Based Digital Identity & KYC Verification
 * **Subtitle:** A Privacy-Preserving On-Chain Credential Registry
 * **Domain:** Blockchain, Cryptography & Decentralized Identity
 * **Speaker Notes:**
-  > "Good morning/afternoon evaluators. Today I will present ChainKYC, an intermediate blockchain working prototype designed to solve the data exposure and central point of failure problems in traditional KYC onboarding."
+  > "Good morning/afternoon evaluators. Today I will present AegisID, an intermediate blockchain working prototype designed to solve the data exposure and central point of failure problems in traditional KYC onboarding."
 
 ---
 
@@ -27,7 +27,7 @@ A 10-slide presentation structure for defending and demonstrating the ChainKYC m
 * **Salted Cryptographic Commitments:** Only an opaque 32-byte ID and a salted SHA-256 digest are recorded on-chain.
 * **Decentralized Authoritative State:** Third parties verify credential validity directly from smart contracts using QR codes.
 * **Speaker Notes:**
-  > "ChainKYC resolves this dilemma by separating verification from data storage. The smart contract acts as an immutable, authoritative truth anchor without ever knowing the user's name or identity number."
+  > "AegisID resolves this dilemma by separating verification from data storage. The smart contract acts as an immutable, authoritative truth anchor without ever knowing the user's name or identity number."
 
 ---
 

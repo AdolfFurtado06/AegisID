@@ -1,7 +1,7 @@
-# ChainKYC - System Architecture & Privacy Model
+# AegisID - System Architecture & Privacy Model
 
 ## Overview
-ChainKYC is a privacy-conscious, blockchain-anchored digital identity verification prototype. It separates identity document management from public on-chain verification, ensuring that zero personally identifiable information (PII) is ever written to the immutable ledger.
+AegisID is a privacy-conscious, blockchain-anchored digital identity verification prototype. It separates identity document management from public on-chain verification, ensuring that zero personally identifiable information (PII) is ever written to the immutable ledger.
 
 ```
 +-------------------------------------------------------------+

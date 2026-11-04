@@ -1,5 +1,5 @@
 /**
- * ChainKYC - Automated Live Demonstration Seeder
+ * AegisID - Automated Live Demonstration Seeder
  * Populates realistic on-chain & off-chain scenarios for evaluations:
  * 1. Alice Johnson: ACTIVE verified on-chain credential
  * 2. Bob Miller: REVOKED on-chain credential (ready to demonstrate revoked QR state)
@@ -24,7 +24,7 @@ const {
 
 async function main() {
   console.log("==================================================");
-  console.log("🌱 Seeding ChainKYC Live Evaluation Scenarios");
+  console.log("🌱 Seeding AegisID Live Evaluation Scenarios");
   console.log("==================================================");
 
   const sampleDocPath = path.join(__dirname, "..", "test-documents", "sample_mock_id.png");

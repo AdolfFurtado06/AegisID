@@ -97,7 +97,7 @@ export default function MyIdentity() {
     if (!data?.qrDataUrl) return;
     const a = document.createElement("a");
     a.href = data.qrDataUrl;
-    a.download = `ChainKYC_${data.credential.id.substring(0, 10)}.png`;
+    a.download = `AegisID_${data.credential.id.substring(0, 10)}.png`;
     a.click();
     toast.info("Downloading QR code image...");
   };

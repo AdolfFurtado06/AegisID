@@ -512,14 +512,14 @@ async function getW3CCredential(req, res) {
     const contractAddress = getDeployedContractAddress();
     const subjectDid = credential.user.walletAddress
       ? `did:pkh:eip155:31337:${credential.user.walletAddress}`
-      : `urn:chainkyc:user:${credential.user.id}`;
+      : `urn:aegisid:user:${credential.user.id}`;
 
     const w3cPayload = {
       "@context": [
         "https://www.w3.org/2018/credentials/v1",
         "https://schema.org"
       ],
-      id: `urn:chainkyc:credential:${credential.id}`,
+      id: `urn:aegisid:credential:${credential.id}`,
       type: ["VerifiableCredential", "DigitalIdentityCredential"],
       issuer: `did:pkh:eip155:31337:${contractAddress || "0x5FbDB2315678afecb367f032d93F642f64180aa3"}`,
       issuanceDate: credential.issuedAt ? credential.issuedAt.toISOString() : new Date().toISOString(),
@@ -531,9 +531,9 @@ async function getW3CCredential(req, res) {
       },
       evidence: [
         {
-          id: `urn:chainkyc:application:${credential.applicationId}`,
+          id: `urn:aegisid:application:${credential.applicationId}`,
           type: ["DocumentVerificationEvidence"],
-          verifier: "ChainKYC Administrator",
+          verifier: "AegisID Administrator",
           documentType: credential.application.documentType,
         }
       ],

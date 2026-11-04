@@ -77,7 +77,7 @@ app.use((err, req, res, next) => {
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log("==================================================");
-    console.log(`🚀 ChainKYC Backend running on http://localhost:${PORT}`);
+    console.log(`🚀 AegisID Backend running on http://localhost:${PORT}`);
     console.log(`📡 Contract Address: ${getDeployedContractAddress() || "Not deployed yet"}`);
     console.log(`🔒 Environment: ${process.env.NODE_ENV || "development"}`);
     console.log("==================================================");

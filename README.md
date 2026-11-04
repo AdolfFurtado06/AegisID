@@ -1,4 +1,4 @@
-# ChainKYC — Blockchain-Based Digital Identity & KYC Verification
+# AegisID — Blockchain-Based Digital Identity & KYC Verification
 
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.24-363636?logo=solidity)](https://soliditylang.org/)
 [![Hardhat](https://img.shields.io/badge/Hardhat-2.22-yellow)](https://hardhat.org/)
@@ -7,7 +7,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-20+-green?logo=node.js)](https://nodejs.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?logo=prisma)](https://www.prisma.io/)
 
-A complete, privacy-conscious digital identity verification system. ChainKYC allows users to submit synthetic identity documentation for administrator review, commits privacy-preserving cryptographic hashes to an Ethereum-compatible smart contract, issues verifiable QR codes for third-party public checks, and enforces authoritative on-chain revocation.
+A complete, privacy-conscious digital identity verification system. AegisID allows users to submit synthetic identity documentation for administrator review, commits privacy-preserving cryptographic hashes to an Ethereum-compatible smart contract, issues verifiable QR codes for third-party public checks, and enforces authoritative on-chain revocation.
 
 ---
 

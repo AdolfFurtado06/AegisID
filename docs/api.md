@@ -1,4 +1,4 @@
-# ChainKYC - REST API Specification
+# AegisID - REST API Specification
 
 Base URL: `http://localhost:5000/api`
 
