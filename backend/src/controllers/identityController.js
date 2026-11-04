@@ -19,6 +19,16 @@ const {
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
+function getBaseUrl(req) {
+  const forwardedHost = req?.get ? req.get("x-forwarded-host") : null;
+  const host = forwardedHost || (req?.get ? req.get("host") : null);
+  if (host) {
+    const proto = req.get("x-forwarded-proto") || req.protocol || "http";
+    return `${proto}://${host}`;
+  }
+  return FRONTEND_URL;
+}
+
 /**
  * Returns current user's credential and QR data.
  */
@@ -44,7 +54,7 @@ async function getMyCredential(req, res) {
     }
 
     // Public QR verification URL
-    const verificationUrl = `${FRONTEND_URL}/verify/${credential.id}`;
+    const verificationUrl = `${getBaseUrl(req)}/verify/${credential.id}`;
     const qrDataUrl = await qrcode.toDataURL(verificationUrl, {
       errorCorrectionLevel: "H",
       margin: 2,
@@ -230,7 +240,7 @@ async function issueCredential(req, res) {
       },
     });
 
-    const verificationUrl = `${FRONTEND_URL}/verify/${credential.id}`;
+    const verificationUrl = `${getBaseUrl(req)}/verify/${credential.id}`;
     const qrDataUrl = await qrcode.toDataURL(verificationUrl, {
       errorCorrectionLevel: "H",
       margin: 2,

@@ -24,7 +24,18 @@ app.use(
 // CORS configuration
 app.use(
   cors({
-    origin: [FRONTEND_URL, "http://127.0.0.1:5173"],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (
+        origin === FRONTEND_URL ||
+        origin === "http://localhost:5173" ||
+        origin === "http://127.0.0.1:5173" ||
+        origin.endsWith(".vercel.app")
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
@@ -74,7 +85,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error." });
 });
 
-if (process.env.NODE_ENV !== "test") {
+if (process.env.NODE_ENV !== "test" && !process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log("==================================================");
     console.log(`🚀 AegisID Backend running on http://localhost:${PORT}`);

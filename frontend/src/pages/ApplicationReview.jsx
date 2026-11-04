@@ -199,19 +199,14 @@ export default function ApplicationReview() {
 
   const downloadFileProtected = async () => {
     try {
-      const token = localStorage.getItem("aegisid_token") || localStorage.getItem("chainkyc_token");
-      const res = await fetch(`http://localhost:5000/api/kyc/${id}/document`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error("Could not download file");
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
+      const res = await api.get(`/kyc/${id}/document`, { responseType: "blob" });
+      const url = window.URL.createObjectURL(new Blob([res.data]));
       const a = document.createElement("a");
       a.href = url;
       a.download = `Application_${id}_document`;
       a.click();
     } catch (err) {
-      alert("Error downloading document: " + err.message);
+      alert("Error downloading document: " + (err.response?.data?.error || err.message));
     }
   };
 
