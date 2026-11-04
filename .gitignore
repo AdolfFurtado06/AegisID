@@ -13,6 +13,7 @@ build/
 
 # Local databases
 *.db
+!backend/prisma/seed.db
 *.db-journal
 *.sqlite
 dev.db
